@@ -23,12 +23,6 @@ void demo_use_after_free() {
     printf("\nAccessing node->value AFTER free: %d\n",
            node->value);
 
-    printf("\nExplanation:\n");
-    printf("- node still holds the old address\n");
-    printf("- but that memory belongs to allocator now\n");
-    printf("- reading it is undefined behavior\n");
-    printf("- value might look ok, might be garbage\n");
-    printf("- Valgrind will catch this exactly\n");
 }
 
 void demo_memory_leak() {
@@ -52,11 +46,5 @@ void demo_memory_leak() {
         current = current->next;
     }
 
-    printf("\nFunction returns WITHOUT calling free_list.\n");
-    printf("All 3 nodes are now leaked.\n");
-    printf("Valgrind will report exactly 3 lost blocks.\n");
-
-    // deliberately NOT calling free_list(head)
     free_list(head);
-    printf("Fixed: free_list called. No leaks. \n");
 }

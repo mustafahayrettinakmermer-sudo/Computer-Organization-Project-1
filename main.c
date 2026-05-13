@@ -54,7 +54,6 @@ int main() {
     printf("\nCalling free_list...\n");
     free_list(head);
     printf("All nodes freed.\n");
-    printf("Run this under Valgrind to confirm zero leaks.\n");
 
     printf("\n=============================");
     printf("\n   ACT 4: BUG DEMOS          ");
